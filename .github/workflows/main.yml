@@ -39,6 +39,12 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
+    - name: Deploy to Render
+      run: |
+        curl -X POST "https://api.render.com/deploy/srv-csqe3sd6l47c73dsfphg?key=_ki6EKGqVhQ" \
+        -H "Content-Type: application/json" \
+        -d '{}'
+
     - name: Tests
       run: |
         python -m unittest discover -s tests
